@@ -1,0 +1,52 @@
+<h1 class="h5">Olá, faça login para entrar no sistema.</h1>
+
+<form [formGroup]="loginForm">
+  <label for="user">Usuário</label>
+  <input
+    formControlName="user"
+    class="form-control"
+    type="text"
+    id="user"
+    name="user"
+    placeholder="Nome de usuário"
+    autofocus
+    required
+  />
+  <small
+    *ngIf="
+      loginForm.controls['user'].dirty && loginForm.hasError('required', 'user')
+    "
+    class="text-danger"
+  >
+    *Insira um nome de usuário válido
+  </small>
+
+  <label for="password">Senha</label>
+  <input
+    formControlName="password"
+    class="form-control"
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Senha"
+    required
+  />
+  <small
+    *ngIf="
+      loginForm.controls['password'].dirty &&
+      loginForm.hasError('required', 'password')
+    "
+    class="text-danger"
+  >
+    *Insira uma senha válida
+  </small>
+
+  <button
+    [disabled]="loginForm.invalid"
+    (click)="onSubmit()"
+    type="submit"
+    class="btn btn-primary"
+  >
+    Entrar
+  </button>
+</form>
