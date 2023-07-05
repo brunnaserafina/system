@@ -1,0 +1,125 @@
+<div>
+  <div class="row">
+    <!-- sidebar -->
+    <div class="col-md-3 sidebar bg-dark">
+      <h2 class="h6" (click)="toogleIconsSidebar()">
+        <i class="bx bx-menu nav_logo-icon text-center"></i>
+        <span class="name-function" *ngIf="isDescriptionIconVisible">menu</span>
+      </h2>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <button class="btn btn-primary" (click)="toggleForm()">
+            <i class="bx bx-user-plus nav_logo-icon"></i>
+            <span class="name-function" *ngIf="isDescriptionIconVisible"
+              >cadastrar usuário</span
+            >
+          </button>
+        </li>
+      </ul>
+      <button class="btn btn-danger bottom-button" (click)="logout()">
+        <i class="bx bx-log-out nav_icon"></i>
+        <span class="name-function" *ngIf="isDescriptionIconVisible">sair</span>
+      </button>
+    </div>
+
+    <!-- pagina home -->
+    <div *ngIf="!isFormVisible" class="text-center">
+      <img src="../../../assets/images/illustration-home.png" alt="" />
+      <h1 class="h5">Selecione a opção desejada no menu lateral.</h1>
+    </div>
+
+    <div class="col-md-12 content">
+      <div class="centered-form" *ngIf="isFormVisible">
+        <h1 class="h5 text-center">CADASTRO DE USUÁRIO</h1>
+
+        <form [formGroup]="signUpForm">
+          <label for="code">Código</label>
+          <input
+            formControlName="code"
+            class="form-control"
+            type="text"
+            id="code"
+            name="code"
+            placeholder="Insira o código"
+            autofocus
+          />
+
+          <label for="name">Nome (*)</label>
+          <input
+            formControlName="name"
+            class="form-control"
+            type="name"
+            id="name"
+            name="name"
+            placeholder="Insira o nome completo"
+            required
+          />
+          <small
+            *ngIf="
+              signUpForm.controls['name'].dirty &&
+              signUpForm.hasError('required', 'name')
+            "
+            class="text-danger"
+          >
+            *Insira uma nome válido
+          </small>
+
+          <label for="cpf">CPF (*)</label>
+          <input
+            formControlName="cpf"
+            class="form-control"
+            type="text"
+            id="cpf"
+            name="cpf"
+            placeholder="Insira somente os números do CPF"
+            mask="000.000.000-00"
+            required
+          />
+          <small
+            *ngIf="
+              signUpForm.controls['cpf'].dirty &&
+              signUpForm.hasError('required', 'cpf')
+            "
+            class="text-danger"
+          >
+            *Insira um CPF válido
+          </small>
+
+          <label for="address">Endereço</label>
+          <input
+            formControlName="address"
+            class="form-control"
+            type="text"
+            id="address"
+            name="address"
+            placeholder="Endereço"
+          />
+
+          <label for="phone">Telefone</label>
+          <input
+            formControlName="phone"
+            class="form-control"
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="Telefone"
+            prefix="+55 "
+            mask="(00) 00000-0000"
+          />
+
+          <button
+            [disabled]="
+              signUpForm.controls['name'].invalid ||
+              signUpForm.controls['cpf'].invalid
+            "
+            (click)="onSubmit()"
+            type="submit"
+            class="btn btn-primary"
+          >
+            Salvar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

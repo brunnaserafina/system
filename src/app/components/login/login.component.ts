@@ -41,7 +41,7 @@ export class LoginComponent {
           progressBar: true,
         });
         //save access token to localStorage later
-        this.router.navigate(['/']); //navigate to the home route when the component is created
+        this.router.navigate(['/home']); //navigate to the home route when the component is created
       },
       error: (err) => {
         if (err.status === 400) {
