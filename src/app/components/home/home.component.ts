@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IClient } from 'src/app/interfaces/client';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
+import { cpf } from 'cpf-cnpj-validator';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,7 @@ export class HomeComponent {
 
   isFormVisible: boolean = false;
   isDescriptionIconVisible: boolean = true;
+  isCpfInvalid: boolean = false;
 
   constructor(
     private router: Router,
@@ -43,6 +45,13 @@ export class HomeComponent {
   }
 
   onSubmit() {
+    if (!cpf.isValid(this.signUpForm.value.cpf)) {
+      this.isCpfInvalid = true;
+      return;
+    } else {
+      this.isCpfInvalid = false;
+    }
+
     this.service.signUp(this.signUpForm.value).subscribe({
       next: (response) => {
         this.toastr.success(response.message, 'Cadastro efetuado!', {

@@ -52,6 +52,7 @@
             id="name"
             name="name"
             placeholder="Insira o nome completo"
+            minlength="2"
             required
           />
           <small
@@ -75,13 +76,7 @@
             mask="000.000.000-00"
             required
           />
-          <small
-            *ngIf="
-              signUpForm.controls['cpf'].dirty &&
-              signUpForm.hasError('required', 'cpf')
-            "
-            class="text-danger"
-          >
+          <small *ngIf="isCpfInvalid" class="text-danger">
             *Insira um CPF válido
           </small>
 
