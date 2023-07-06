@@ -42,7 +42,6 @@ export class LoginComponent {
         });
 
         localStorage.setItem('system', response.token);
-
         this.router.navigate(['/home']);
       },
       error: (err) => {
