@@ -40,8 +40,10 @@ export class LoginComponent {
           closeButton: true,
           progressBar: true,
         });
-        //save access token to localStorage later
-        this.router.navigate(['/home']); //navigate to the home route when the component is created
+
+        localStorage.setItem('system', response.token);
+
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.log(err);
