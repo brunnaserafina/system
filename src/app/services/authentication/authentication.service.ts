@@ -13,12 +13,11 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) {}
 
-  login(user: IUser): Observable<IUser> {
+  login(user: IUser): Observable<any> {
     return this.http.post<IUser>(`${this.api}/auth/login`, user);
   }
 
   signUp(client: IClient): Observable<any> {
-    console.log(client);
-    return this.http.post<IClient>(`${this.api}/auth/sign-up`, client);
+    return this.http.post<IClient>(`${this.api}/customers/register`, client);
   }
 }

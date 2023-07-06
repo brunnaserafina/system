@@ -44,27 +44,16 @@ export class LoginComponent {
         this.router.navigate(['/home']); //navigate to the home route when the component is created
       },
       error: (err) => {
-        if (err.status === 400) {
-          this.toastr.error(
-            'Confira os dados e tente novamente!',
-            'Erro de login',
-            {
-              timeOut: 3000,
-              closeButton: true,
-              progressBar: true,
-            }
-          );
-        } else {
-          this.toastr.error(
-            'Erro de login',
-            'Ocorreu um erro no servidor. Favor, tente novamente mais tarde!',
-            {
-              timeOut: 3000,
-              closeButton: true,
-              progressBar: true,
-            }
-          );
-        }
+        console.log(err);
+        this.toastr.error(
+          'Confira os dados e tente novamente!',
+          'Erro de login',
+          {
+            timeOut: 3000,
+            closeButton: true,
+            progressBar: true,
+          }
+        );
       },
     });
   }
