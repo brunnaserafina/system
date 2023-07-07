@@ -10,9 +10,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
-  let authService: AuthenticationService;
-  let toastrService: ToastrService;
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -78,7 +75,7 @@ describe('HomeComponent', () => {
     spyOn(component['router'], 'navigate');
     spyOn(localStorage, 'clear');
     component.logout();
-    expect(component['router'].navigate).toHaveBeenCalledWith(['/']);
+    expect(component['router'].navigate).toHaveBeenCalledWith(['/login']);
     expect(localStorage.clear).toHaveBeenCalled();
   });
 });

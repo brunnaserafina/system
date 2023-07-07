@@ -45,7 +45,6 @@ export class LoginComponent {
         this.router.navigate(['/home']);
       },
       error: (err) => {
-        console.log(err);
         this.toastr.error(
           'Confira os dados e tente novamente!',
           'Erro de login',

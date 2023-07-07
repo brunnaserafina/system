@@ -75,7 +75,7 @@ export class HomeComponent {
   }
 
   logout() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
     localStorage.clear();
   }
 
