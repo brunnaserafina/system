@@ -103,12 +103,12 @@
           />
 
           <button
+            type="submit"
             [disabled]="
               signUpForm.controls['name'].invalid ||
               signUpForm.controls['cpf'].invalid
             "
             (click)="onSubmit()"
-            type="submit"
             class="btn btn-primary text-center"
           >
             Salvar
